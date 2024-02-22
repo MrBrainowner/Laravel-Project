@@ -13,6 +13,50 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+// Route::get('/account/{name?}', function($name = "404"){
+//     if($name == "404"){
+//         return view("404");
+//     }else{
+//         return view("account");
+//     }
+// })->name("account-name");
+
+Route::get('/home', function () {
+    return view('home');
+})->name("home");
+
+Route::get('/about', function () {
+    return view('about');
+})->name("about");
+
+Route::get('/services', function () {
+    return view('services');
+})->name("services");
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name("contact");
+
+// dashboard
+
+Route::name('dashboard.')->group(function () {
+    Route::get('/admin', function () {
+       return view("account");
+    })->name('admin');
+    Route::get('/user', function () {
+       return view("account");
+    })->name('user');
+});
+
+Route::name('services.')->group(function () {
+    Route::get('/service1', function () {
+       return view("service1");
+    })->name('service1');
+    Route::get('/service2', function () {
+       return view("service2");
+    })->name('service2');
+    Route::get('/service3', function () {
+       return view("service3");
+    })->name('service3');
 });
